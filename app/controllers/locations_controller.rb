@@ -6,10 +6,11 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.paginate(page: params[:page], per_page: 10)
+    all_locations = Location.all
     respond_to do |format|
       format.html
       format.json
-      format.csv { send_data @locations.to_csv, filename: "locations-#{Date.today}.csv" }
+      format.csv { send_data all_locations.to_csv, filename: "locations-#{Date.today}.csv" }
     end
   end
 

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Locations</h1>
-
+<p><%= link_to 'Download CSV', '/locations.csv' %></p>
 <table border="1px">
   <thead>
     <tr>
@@ -25,5 +25,4 @@
 </table>
 <%= will_paginate @locations %>
 <br>
-
 <%= link_to 'New Location', new_location_path %>
