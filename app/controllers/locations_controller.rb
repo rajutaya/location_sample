@@ -14,6 +14,14 @@ class LocationsController < ApplicationController
     end
   end
 
+  #retrieving the location data
+  def search
+    required_params(params, :keywords)
+    locations = Location.search(params[:keywords]) if params[:keywords]
+    render json: locations.present? ? locations : ['No Results Found']
+  end
+
+
   # GET /locations/1
   # GET /locations/1.json
   def show
