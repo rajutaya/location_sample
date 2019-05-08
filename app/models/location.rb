@@ -16,7 +16,7 @@ class Location < ApplicationRecord
 
   def self.search(keywords)
       if keywords.present?
-        where("city LIKE ? or slug LIKE ?", "%#{keywords}%", "%#{keywords}%").pluck(:city, :address)
+        where("city LIKE ? or slug LIKE ?", "%#{keywords}%", "%#{keywords}%").pluck(:city, :address).limit(5)
       else
         all
       end
